@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>flag.co2_eos &mdash; flag 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            flag
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">flag</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">flag.co2_eos</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_autosummary/flag.co2_eos.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-flag.co2_eos">
+<span id="flag-co2-eos"></span><h1>flag.co2_eos<a class="headerlink" href="#module-flag.co2_eos" title="Link to this heading"></a></h1>
+<p>Author: Joe McNease
+Date  : Thu Dec 19 2024</p>
+<dl class="simple">
+<dt>Compute density and velocity of CO2 at:</dt><dd><ul class="simple">
+<li><p>temperature (K) [216 &lt;= T &lt;= 1100]</p></li>
+<li><p>pressure (MPa)  [  0 &lt;= P &lt;=  800]</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="sw" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SW<span class="fn-bracket">]</span></span>
+<p>Span, R, and Wagner, W. A New Equation of State for Carbon Dioxide Covering
+the Fluid Region from the Triple-Point Temperature to 1100 K at Pressures
+up to 800 MPa. United States: N. p., 1996. Web. doi:10.1063/1.555991.</p>
+</div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="flag.co2_eos.bulk_modulus">
+<span class="sig-prename descclassname"><span class="pre">flag.co2_eos.</span></span><span class="sig-name descname"><span class="pre">bulk_modulus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#flag.co2_eos.bulk_modulus" title="Link to this definition"></a></dt>
+<dd><p>Compute bulk modulus of C02 given pressure and temperature by a root
+finding process using the equation of state [SW].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<em>float</em>) – Pressure (Pa)</p></li>
+<li><p><strong>T</strong> (<em>float</em>) – Temperature (K)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Velocity (m/s)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Since [SW] do not give explicit equations for the density of C02
+at a given temperature and pressure, we must use an implicit
+equation and solve for density by a root finding process. By
+the form of the equation for fixed temperature and varying density,
+we can reliably find a root if we use the Newton-Raphson method
+with an initial guess of 2000 kg/m^3.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="id1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SW<span class="fn-bracket">]</span></span>
+<p>Span, R, and Wagner, W. A New Equation of State for Carbon Dioxide Covering
+the Fluid Region from the Triple-Point Temperature to 1100 K at Pressures
+up to 800 MPa. United States: N. p., 1996. Web. doi:10.1063/1.555991.</p>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="flag.co2_eos.density">
+<span class="sig-prename descclassname"><span class="pre">flag.co2_eos.</span></span><span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#flag.co2_eos.density" title="Link to this definition"></a></dt>
+<dd><p>Compute density of C02 given temperature and pressure by a root
+finding process using the equation of state [SW].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<em>float</em>) – Pressure (Pa)</p></li>
+<li><p><strong>T</strong> (<em>float</em>) – Temperature (K)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Density (kg/m^3)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Since [SW] do not give explicit equations for the density of C02
+at a given temperature and pressure, we must use an implicit
+equation and solve for density by a root finding process. By
+the form of the equation for fixed temperature and varying density,
+we can reliably find a root if we use the Newton-Raphson or secant
+method with an initial guess of 1500 kg/m^3.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="id2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SW<span class="fn-bracket">]</span></span>
+<p>Span, R, and Wagner, W. A New Equation of State for Carbon Dioxide Covering
+the Fluid Region from the Triple-Point Temperature to 1100 K at Pressures
+up to 800 MPa. United States: N. p., 1996. Web. doi:10.1063/1.555991.</p>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="flag.co2_eos.pressure">
+<span class="sig-prename descclassname"><span class="pre">flag.co2_eos.</span></span><span class="sig-name descname"><span class="pre">pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#flag.co2_eos.pressure" title="Link to this definition"></a></dt>
+<dd><p>Compute pressure of C02 for density (rho) and temperature (T)
+given by the equation of state [SW].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rho</strong> (<em>float</em>) – Density (kg/m^3)</p></li>
+<li><p><strong>T</strong> (<em>float</em>) – Temperature (K)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pressure (Pa)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="id3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SW<span class="fn-bracket">]</span></span>
+<p>Span, R, and Wagner, W. A New Equation of State for Carbon Dioxide Covering
+the Fluid Region from the Triple-Point Temperature to 1100 K at Pressures
+up to 800 MPa. United States: N. p., 1996. Web. doi:10.1063/1.555991.</p>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="flag.co2_eos.velocity">
+<span class="sig-prename descclassname"><span class="pre">flag.co2_eos.</span></span><span class="sig-name descname"><span class="pre">velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#flag.co2_eos.velocity" title="Link to this definition"></a></dt>
+<dd><p>Compute velocity of C02 given temperature and pressure by a root
+finding process using the equation of state [SW].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<em>float</em>) – Pressure (Pa)</p></li>
+<li><p><strong>T</strong> (<em>float</em>) – Temperature (K)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Velocity (m/s)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Since [SW] do not give explicit equations for the density of C02
+at a given temperature and pressure, we must use an implicit
+equation and solve for density by a root finding process. By
+the form of the equation for fixed temperature and varying density,
+we can reliably find a root if we use the Newton-Raphson method
+with an initial guess of 2000 kg/m^3.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SW<span class="fn-bracket">]</span></span>
+<p>Span, R, and Wagner, W. A New Equation of State for Carbon Dioxide Covering
+the Fluid Region from the Triple-Point Temperature to 1100 K at Pressures
+up to 800 MPa. United States: N. p., 1996. Web. doi:10.1063/1.555991.</p>
+</div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Joe McNease.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
