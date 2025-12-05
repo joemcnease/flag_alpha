@@ -1,0 +1,17 @@
+[build-system]
+requires = ["scikit-build-core", "nanobind", "setuptools", "wheel"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "flag"
+version = "0.1.0"
+description = "Flag package with nanobind C++ backend"
+readme = "README.md"
+authors = [{ name = "Joe McNease", email = "joemcnease11@gmail.com" }]
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.23", "scipy>=1.9", "matplotlib>=3.8", "pytest>=3.4"]
+
+[tool.scikit-build]
+wheel.packages = ["flag"]
+cmake.source-dir = "src"
+cmake.verbose = true

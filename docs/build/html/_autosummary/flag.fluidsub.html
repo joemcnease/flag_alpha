@@ -1,0 +1,215 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>flag.fluidsub &mdash; flag 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="flag.utils" href="flag.utils.html" />
+    <link rel="prev" title="flag.oil" href="flag.oil.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            flag
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="flag.h2o.html">flag.h2o</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flag.h2o_co2.html">flag.h2o_co2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flag.brine.html">flag.brine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flag.gas.html">flag.gas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flag.oil.html">flag.oil</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">flag.fluidsub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flag.fluidsub.fluidsub"><code class="docutils literal notranslate"><span class="pre">fluidsub()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flag.fluidsub.reuss_average"><code class="docutils literal notranslate"><span class="pre">reuss_average()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flag.fluidsub.voigt_average"><code class="docutils literal notranslate"><span class="pre">voigt_average()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flag.fluidsub.vrh_average"><code class="docutils literal notranslate"><span class="pre">vrh_average()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flag.utils.html">flag.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flag.types.html">flag.types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flag.exceptions.html">flag.exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">flag</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../modules.html">Modules</a></li>
+      <li class="breadcrumb-item active">flag.fluidsub</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_autosummary/flag.fluidsub.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-flag.fluidsub">
+<span id="flag-fluidsub"></span><h1>flag.fluidsub<a class="headerlink" href="#module-flag.fluidsub" title="Link to this heading"></a></h1>
+<p>Some helpful tools for fluid substitution.</p>
+<p>See Gassman (1951) and Smith, Sondergeld, and Rai (2003)
+for more information on theory and practice, respectively.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="flag.fluidsub.fluidsub">
+<span class="sig-prename descclassname"><span class="pre">flag.fluidsub.</span></span><span class="sig-name descname"><span class="pre">fluidsub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Ks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Kfl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#flag.fluidsub.fluidsub" title="Link to this definition"></a></dt>
+<dd><p>Isotropic fluid subsitution using low-frequency
+Gassman (1951) theory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Ks</strong> (<em>TFVec</em>) – Bulk modulus of rock frame [GPa]</p></li>
+<li><p><strong>K0</strong> (<em>TFVec</em>) – Bulk modulus of mineral matrix [GPa]</p></li>
+<li><p><strong>Kfl</strong> (<em>TFVec</em>) – Bulk modulus of pore fluid [GPa]</p></li>
+<li><p><strong>phi</strong> (<em>TFVec</em>) – Porosity</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Saturated bulk modulus</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TFVec</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="flag.fluidsub.reuss_average">
+<span class="sig-prename descclassname"><span class="pre">flag.fluidsub.</span></span><span class="sig-name descname"><span class="pre">reuss_average</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#flag.fluidsub.reuss_average" title="Link to this definition"></a></dt>
+<dd><p>Reuss (isostress) average.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>K</strong> (<em>TFVec</em>) – Quantity to average.</p></li>
+<li><p><strong>S</strong> (<em>TFVec</em>) – Averaging weights for each quantity.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Reuss average of K vector</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TFVec</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="flag.fluidsub.voigt_average">
+<span class="sig-prename descclassname"><span class="pre">flag.fluidsub.</span></span><span class="sig-name descname"><span class="pre">voigt_average</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#flag.fluidsub.voigt_average" title="Link to this definition"></a></dt>
+<dd><p>Voigt (isostrain) average.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>K</strong> (<em>TFVec</em>) – Quantity to average.</p></li>
+<li><p><strong>S</strong> (<em>TFVec</em>) – Averaging weights for each quantity.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Voigt average of K vector</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TFVec</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="flag.fluidsub.vrh_average">
+<span class="sig-prename descclassname"><span class="pre">flag.fluidsub.</span></span><span class="sig-name descname"><span class="pre">vrh_average</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#flag.fluidsub.vrh_average" title="Link to this definition"></a></dt>
+<dd><p>Voigt-Reuss-Hill average.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>K</strong> (<em>TFVec</em>) – Quantity to average.</p></li>
+<li><p><strong>S</strong> (<em>TFVec</em>) – Averaging weights for each quantity.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Voigt-Reuss-Hill average of K vector</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TFVec</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="flag.oil.html" class="btn btn-neutral float-left" title="flag.oil" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="flag.utils.html" class="btn btn-neutral float-right" title="flag.utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Joe McNease.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

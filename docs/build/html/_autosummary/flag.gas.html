@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>flag.gas &mdash; flag 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="flag.oil" href="flag.oil.html" />
+    <link rel="prev" title="flag.brine" href="flag.brine.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            flag
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="flag.h2o.html">flag.h2o</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flag.h2o_co2.html">flag.h2o_co2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flag.brine.html">flag.brine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">flag.gas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flag.gas.bulk_modulus"><code class="docutils literal notranslate"><span class="pre">bulk_modulus()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flag.gas.density"><code class="docutils literal notranslate"><span class="pre">density()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flag.gas.velocity"><code class="docutils literal notranslate"><span class="pre">velocity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flag.gas.viscosity"><code class="docutils literal notranslate"><span class="pre">viscosity()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flag.oil.html">flag.oil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flag.fluidsub.html">flag.fluidsub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flag.utils.html">flag.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flag.types.html">flag.types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flag.exceptions.html">flag.exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">flag</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../modules.html">Modules</a></li>
+      <li class="breadcrumb-item active">flag.gas</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_autosummary/flag.gas.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-flag.gas">
+<span id="flag-gas"></span><h1>flag.gas<a class="headerlink" href="#module-flag.gas" title="Link to this heading"></a></h1>
+<p>Physical properties of gas.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="flag.gas.bulk_modulus">
+<span class="sig-prename descclassname"><span class="pre">flag.gas.</span></span><span class="sig-name descname"><span class="pre">bulk_modulus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'rpl'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FVec</span></span></span><a class="headerlink" href="#flag.gas.bulk_modulus" title="Link to this definition"></a></dt>
+<dd><p>Bulk modulus of gas [GPa].</p>
+<dl class="simple">
+<dt>Application conditions:</dt><dd><dl class="simple">
+<dt>rpl (Hydrocarbon Model):</dt><dd><ol class="arabic simple">
+<li><p>Pressure    [MPa] :  5 &lt;= P &lt;= 110</p></li>
+<li><p>Temperature [C]   : 20 &lt;= T &lt;= 150</p></li>
+<li><p>Gas gravity       :  0 &lt;= G &lt;=   2</p></li>
+</ol>
+</dd>
+<dt>light (Light Gas Model):</dt><dd><ol class="arabic simple">
+<li><p>Pressure    [MPa] :  5 &lt;= P &lt;= 110</p></li>
+<li><p>Temperature [C]   : 20 &lt;= T &lt;= 150</p></li>
+<li><p>Gas gravity       :  0 &lt;= G &lt;=   1</p></li>
+</ol>
+</dd>
+<dt>global (Global Gas Model):</dt><dd><ol class="arabic simple">
+<li><p>Pressure    [MPa] :  5 &lt;= P &lt;= 110</p></li>
+<li><p>Temperature [C]   : 20 &lt;= T &lt;= 150</p></li>
+<li><p>Gas gravity       :  0 &lt;= G &lt;=   2</p></li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<em>TFVec</em>) – Pressure [MPa]</p></li>
+<li><p><strong>T</strong> (<em>TFVec</em>) – Temperature [C]</p></li>
+<li><p><strong>G</strong> (<em>TFVec</em>) – Gas gravity</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – Model used to calculate bulk modulus. Defaults to ‘rpl’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Bulk modulus of gas [GPa].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TFVec</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="flag.gas.density">
+<span class="sig-prename descclassname"><span class="pre">flag.gas.</span></span><span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'rpl'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FVec</span></span></span><a class="headerlink" href="#flag.gas.density" title="Link to this definition"></a></dt>
+<dd><p>Density of gas [g/cm^3].</p>
+<dl class="simple">
+<dt>Application conditions:</dt><dd><dl class="simple">
+<dt>rpl (Hydrocarbon Model):</dt><dd><ol class="arabic simple">
+<li><p>Pressure    [MPa] :  5 &lt;= P &lt;= 110</p></li>
+<li><p>Temperature [C]   : 20 &lt;= T &lt;= 150</p></li>
+<li><p>Gas gravity       :  0 &lt;= G &lt;=   2</p></li>
+</ol>
+</dd>
+<dt>light (Light Gas Model):</dt><dd><ol class="arabic simple">
+<li><p>Pressure    [MPa] :  5 &lt;= P &lt;= 110</p></li>
+<li><p>Temperature [C]   : 20 &lt;= T &lt;= 150</p></li>
+<li><p>Gas gravity       :  0 &lt;= G &lt;=   1</p></li>
+</ol>
+</dd>
+<dt>global (Global Gas Model):</dt><dd><ol class="arabic simple">
+<li><p>Pressure    [MPa] :  5 &lt;= P &lt;= 110</p></li>
+<li><p>Temperature [C]   : 20 &lt;= T &lt;= 150</p></li>
+<li><p>Gas gravity       :  0 &lt;= G &lt;=   2</p></li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<em>TFVec</em>) – Pressure [MPa]</p></li>
+<li><p><strong>T</strong> (<em>TFVec</em>) – Temperature [C]</p></li>
+<li><p><strong>G</strong> (<em>TFVec</em>) – Gas gravity</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – Model used to calculate density. Defaults to ‘rpl’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Density of gas [g/cm^3].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TFVec</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="flag.gas.velocity">
+<span class="sig-prename descclassname"><span class="pre">flag.gas.</span></span><span class="sig-name descname"><span class="pre">velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'rpl'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FVec</span></span></span><a class="headerlink" href="#flag.gas.velocity" title="Link to this definition"></a></dt>
+<dd><p>Velocity of gas [km/s].</p>
+<dl class="simple">
+<dt>Application conditions:</dt><dd><dl class="simple">
+<dt>rpl (Hydrocarbon Model):</dt><dd><ol class="arabic simple">
+<li><p>Pressure    [MPa] :  5 &lt;= P &lt;= 110</p></li>
+<li><p>Temperature [C]   : 20 &lt;= T &lt;= 150</p></li>
+<li><p>Gas gravity       :  0 &lt;= G &lt;=   2</p></li>
+</ol>
+</dd>
+<dt>light (Light Gas Model):</dt><dd><ol class="arabic simple">
+<li><p>Pressure    [MPa] :  5 &lt;= P &lt;= 110</p></li>
+<li><p>Temperature [C]   : 20 &lt;= T &lt;= 150</p></li>
+<li><p>Gas gravity       :  0 &lt;= G &lt;=   1</p></li>
+</ol>
+</dd>
+<dt>global (Global Gas Model):</dt><dd><ol class="arabic simple">
+<li><p>Pressure    [MPa] :  5 &lt;= P &lt;= 110</p></li>
+<li><p>Temperature [C]   : 20 &lt;= T &lt;= 150</p></li>
+<li><p>Gas gravity       :  0 &lt;= G &lt;=   2</p></li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<em>TFVec</em>) – Pressure [MPa]</p></li>
+<li><p><strong>T</strong> (<em>TFVec</em>) – Temperature [C]</p></li>
+<li><p><strong>G</strong> (<em>TFVec</em>) – Gas gravity</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – Model used to calculate velocity. Defaults to ‘rpl’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Velocity of gas [km/s].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TFVec</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="flag.gas.viscosity">
+<span class="sig-prename descclassname"><span class="pre">flag.gas.</span></span><span class="sig-name descname"><span class="pre">viscosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FVec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'rpl'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FVec</span></span></span><a class="headerlink" href="#flag.gas.viscosity" title="Link to this definition"></a></dt>
+<dd><p>Viscosity of gas [cP].</p>
+<dl class="simple">
+<dt>Application conditions:</dt><dd><dl class="simple">
+<dt>rpl (Hydrocarbon Model):</dt><dd><ol class="arabic simple">
+<li><p>Pressure    [MPa] :  5 &lt;= P &lt;= 110</p></li>
+<li><p>Temperature [C]   : 20 &lt;= T &lt;= 150</p></li>
+<li><p>Gas gravity       :  0 &lt;= G &lt;=   2</p></li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>P</strong> (<em>TFVec</em>) – Pressure [MPa]</p></li>
+<li><p><strong>T</strong> (<em>TFVec</em>) – Temperature [C]</p></li>
+<li><p><strong>G</strong> (<em>TFVec</em>) – Gas gravity</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – Model used to calculate viscosity. Defaults to ‘rpl’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Viscosity of gas [cP].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TFVec</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="flag.brine.html" class="btn btn-neutral float-left" title="flag.brine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="flag.oil.html" class="btn btn-neutral float-right" title="flag.oil" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Joe McNease.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
